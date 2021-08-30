@@ -62,7 +62,7 @@ const Diary = ({ diaryObj, isOwner, userObj }) => {
       const {
         target: { value },
       } = event;
-      setReplies(value);
+      setReply(value);
     };
     // 댓글 배열 만들기
     useEffect(() => {
