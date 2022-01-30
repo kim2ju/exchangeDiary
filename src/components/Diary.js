@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { dbService, storageService } from "fbase";
-import Reply from "components/Reply";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt, faEdit, faCommentAlt } from "@fortawesome/free-regular-svg-icons";
+import Reply from "components/Reply";
 
-const Diary = ({ diaryObj, isOwner, userObj }) => {
+const Diary = ({ diaryObj, userObj, isOwner}) => {
     const [editing, setEditing] = useState(false);
     const [replying, setReplying] = useState(false);
     const [reply, setReply] = useState("");
@@ -79,7 +79,7 @@ const Diary = ({ diaryObj, isOwner, userObj }) => {
       <div className="diary">
         {editing ? (
           <>
-            <form onSubmit={onEditSubmit} className="container diaryEdit">
+            <form onSubmit={onEditSubmit}>
               <input
                 type="text"
                 placeholder="일기를 수정하세요"
@@ -91,13 +91,13 @@ const Diary = ({ diaryObj, isOwner, userObj }) => {
               />
               <input type="submit" value="업데이트" className="formBtn" />
             </form>
-            <span onClick={toggleEditing} className="formBtn cancelBtn">
+            <span onClick={toggleEditing} className="formBtn">
               취소
             </span>
           </>
         ) : (
           <>
-            <span className="diaryProfile">{diaryObj.creatorName}</span>
+            <span className="Writer">{diaryObj.creatorName}</span>
             <div className="day">
               <span>{diaryObj.createdMonth}월</span>
               <span>{diaryObj.createdDate}일</span>
@@ -119,29 +119,29 @@ const Diary = ({ diaryObj, isOwner, userObj }) => {
          ))}</div>         
             {isOwner && (
                <div className="diaryBtn">
-                 <span onClick={onDeleteClick}>
-                  <FontAwesomeIcon icon={faTrashAlt} />
-                 </span>
                  <span onClick={toggleEditing}>
                   <FontAwesomeIcon icon={faEdit} />
+                 </span>
+                 <span onClick={onDeleteClick}>
+                  <FontAwesomeIcon icon={faTrashAlt} />
                  </span>
                </div>
             )}
             {replying && (
-              <div className="container diaryReply">
-                <form onSubmit={onReplySubmit} className="container diaryEdit">
-                <input
-                  type="text"
-                  placeholder=""
-                  value={reply}
-                  required
-                  autoFocus
-                  onChange={onReplyChange}
-                  className="formInput"
-                />
-                <input type="submit" value="답글 달기" className="formBtn" />
+              <div className="container">
+                <form onSubmit={onReplySubmit}>
+                  <input
+                    type="text"
+                    placeholder=""
+                    value={reply}
+                    required
+                    autoFocus
+                    onChange={onReplyChange}
+                    className="formInput"
+                  />
+                  <input type="submit" value="답글 달기" className="formBtn" />
                 </form>
-                <span onClick={toggleReplying} className="formBtn cancelBtn">
+                <span onClick={toggleReplying} className="formBtn">
                   취소
                 </span>
               </div>

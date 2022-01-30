@@ -59,7 +59,7 @@ const Write = ({ userObj }) => {
       <div className="container">
       <form onSubmit={onSubmit} className="diaryForm">
       <div className="diaryInput__container">
-        <input
+        <textarea
           className="diaryInput__input"
           value={diary}
           onChange={onChange}

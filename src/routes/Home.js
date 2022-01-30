@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { dbService } from "fbase";
 import Diary from "components/Diary";
+import Banner from "img/banner.png"
 
 const Home = ({ userObj }) => {
     const [diarys, setDiarys] = useState([]);
@@ -16,7 +17,7 @@ const Home = ({ userObj }) => {
   return (
     <div className="container">
       <div className="banner">
-        <p>영원하자 떡뽀끼팸~~</p>
+        <img src={ Banner } alt="banner"/>
       </div>
       {diarys.map((diary) => (
         <Diary

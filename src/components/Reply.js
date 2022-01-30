@@ -12,8 +12,8 @@ const Reply = ({diaryObj, replyObj, isOwner}) => {
   };
 
   return(
-      <div className="container replySet">
-        <span className="replyProfile">{replyObj.creatorName}</span>
+      <div className="replySet">
+        <span className="Writer">{replyObj.creatorName}</span>
         <div className="day">
           <span>{replyObj.createdMonth}월</span>
           <span>{replyObj.createdDate}일</span>

@@ -13,7 +13,7 @@ const Navigation = () => (
       </li>
       <li>
         <Link to="/">
-          우리들의 교환일기!
+          떡뽀끼팸 교환일기!
         </Link>
       </li>
       <li>
